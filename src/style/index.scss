@@ -1,3 +1,157 @@
+@import "./mixin.scss";
+@import "./iconfont.css";
+
+$bg-color: #ede3e7;
+$border: #126e82;
+$main: #93b5cf;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
 body {
-  background-color: aqua;
+  font: bold 20px "Courier";
+  width: 100%;
+  height: 100%;
+}
+
+#container-wrapper {
+  @include center;
+  width: 100%;
+  height: 100%;
+  min-width: 1024px;
+  min-height: 768px;
+  background-color: $bg-color;
+  #container {
+    width: 820px;
+    height: 620px;
+    min-width: 800px;
+    min-height: 600px;
+    background-color: $main;
+    display: flex;
+    flex-direction: column;
+    border: 10px solid $border;
+    border-radius: 10px;
+    color: white;
+    #stage-wrapper {
+      width: 800px;
+      height: 400px;
+      position: relative;
+      #snake {
+        position: absolute;
+        &>div {
+          width: 10px;
+          height: 10px;
+          background-color: white;
+          border: 2px solid $main;
+        }
+      }
+      #food {
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        left: 50px;
+        top: 50px;
+        display: flex;
+        flex-wrap: wrap;
+        &>div {
+          width: 5px;
+          height: 5px;
+          transform: rotate(45deg);
+          background-color: white;
+        }
+      }
+    }
+    #panel-wrapper {
+      width: 800px;
+      height: 200px;
+      display: flex;
+      border-top: 10px solid $border;
+      #game-name-wrapper {
+        @include center;
+        flex: 2;
+        font-size: 30px;
+        flex-direction: column;
+        #github-wrapper {
+          @include center;
+          width: 60px;
+          height: 60px;
+          margin-bottom: 5px;
+          
+          .icon-github {
+            width: 40px;
+            height: 40px;
+            font-size: 40px;
+          }
+        }
+      }
+      #info-wrapper {
+        @include center;
+        flex: 2;     
+        #info {
+          width: 70%;
+          height: 70%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          align-items: flex-start;
+          font-weight: 900;
+          position: relative;
+          left: 20px;
+        }
+      }
+      #hint-wrapper {
+        @include center;
+        flex: 4;
+        font-size: 16px;
+        flex-direction: column;
+        #key-wrapper {
+          width: 100%;
+          flex: 4;
+          @include center;
+          position: relative;
+          &>div {
+            flex: 1;
+            @include center;
+          }
+          #left-part {
+            transform: rotate(90deg);
+            left: 90px;
+            position: relative;
+          }
+          #middle-part {
+            display: flex;
+            flex-direction: column;
+            #top {
+              transform: rotate(180deg);
+              bottom: 20px;
+              position: relative;
+            }
+            #down {
+              top: 20px;
+              position: relative;
+            }
+          }
+          #right-part {
+            transform: rotate(-90deg);
+            right: 90px;
+            position: relative;
+          }
+          .icon-xia {
+            font-size: 45px;
+          }
+        }
+        #word {
+          flex: 1;
+        }
+      }
+    }
+  }
 }
