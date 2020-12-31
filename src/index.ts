@@ -1,3 +1,3 @@
 import './style/index.scss';
 
-console.log('Project Init');
+import Food from './food';
