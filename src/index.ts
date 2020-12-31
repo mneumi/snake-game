@@ -1,4 +1,5 @@
 import './style/index.scss';
 
-import Food from './food';
-import ScorePanel from './score_panel';
+import GameController from './modules/game_controller';
+
+new GameController().play();

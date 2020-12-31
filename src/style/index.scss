@@ -45,12 +45,12 @@ body {
       height: 400px;
       position: relative;
       #snake {
-        position: absolute;
         &>div {
           width: 10px;
           height: 10px;
-          background-color: white;
+          background-color: aqua;
           border: 2px solid $main;
+          position: absolute;
         }
       }
       #food {
@@ -65,7 +65,7 @@ body {
           width: 5px;
           height: 5px;
           transform: rotate(45deg);
-          background-color: white;
+          background-color: crimson;
         }
       }
     }

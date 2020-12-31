@@ -1,23 +1,31 @@
+import { maxLevel, scoreLevel } from './config';
+
 class ScorePanel {
   private score = 0;
-  private level = 0;
   private best = 0;
+  private level = 1;
 
   scoreElement: HTMLElement;
   levelElement: HTMLElement;
   bestElement: HTMLElement;
 
-  constructor(private maxLevel = 99, private upScore = 10) {
+  private maxLevel = maxLevel;
+  private scoreLevel = scoreLevel;
+
+  constructor() {
     this.scoreElement = document.getElementById('score')!;
+    this.bestElement = document.getElementById('best')!;
     this.levelElement = document.getElementById('level')!;
-    this.bestElement = document.getElementById('level')!;
+
+    const bestHistory = window.localStorage.getItem('best') ?? '0';
+    this.setBest(parseInt(bestHistory));
   }
 
-  addScore(): void {
+  increScore(): void {
     this.score++;
     this.scoreElement.innerHTML = `Score: ${this.score}`;
 
-    if (this.score % this.upScore === 0) {
+    if (this.score % this.scoreLevel === 0) {
       this.levelUp();
     }
   }
@@ -27,7 +35,7 @@ class ScorePanel {
   }
 
   levelUp(): void {
-    if (this.level >= this.maxLevel) {
+    if (this.level > this.maxLevel) {
       return;
     }
     this.level++;
@@ -41,6 +49,7 @@ class ScorePanel {
   setBest(bestScore: number): void {
     this.best = bestScore;
     this.bestElement.innerHTML = `Best : ${this.best}`;
+    window.localStorage.setItem('best', `${bestScore}`);
   }
 
   getBest(): number {
